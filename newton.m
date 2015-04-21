@@ -1,33 +1,33 @@
-%Limpa as variÃ¡veis
+%Limpa as variáveis
 clear all;
 %Limpa a Tela
 clc;
-%Instancia a variÃ¡vel simbÃ³lica x
+%Instancia a variável simbólica x
 syms x x0;
-%Entrada de Dados pelo usuÃ¡rio
+%Entrada de Dados pelo usuário
 warning off backtrace;
-fx = input('Digite a funÃ§Ã£o: ');
+fx = input('Digite a função: ');
 x0 = input('Digite o valor de x0 (chute incial): ');
-epsilon = input('Digite a precisÃ£o do erro que deseja: ');
-precision = input('Escolha a precisÃ£o em casas decimais(3 a 32): ');
+epsilon = 10 ^ input('Digite a precisão do erro que deseja: ');
+precision = input('Escolha a precisão em casas decimais(3 a 32): ');
 xpto = true;
 %Tratamento de Erro
 while xpto == true
     if (isempty(precision)) || (precision < 3) || (precision > 32)
         clc
-        warning('O valor de precisÃ£o deve estar entre 3 e 32');
-        precision = input('Escolha a precisÃ£o em casas decimais(3 a 32): ');
+        warning('O valor de precisão deve estar entre 3 e 32');
+        precision = input('Escolha a precisão em casas decimais(3 a 32): ');
     else
     	xpto = false;
     end
 end
-%CÃ¡lculo de Derivada 1Âª e 2Âª
+%Cálculo de Derivada 1ª e 2ª
 dfx = diff(fx);
 ddfx = diff(fx, 2);
 xpto = true;
 precision = abs(precision)-1;
 iteration = 0;
-%Verifica iteraÃ§Ãµes
+%Verifica iterações
 while xpto && iteration < 100
     fa = subs(fx, x, x0);
     dfa = subs(dfx, x, x0);
@@ -40,18 +40,18 @@ while xpto && iteration < 100
     iteration = iteration + 1;
 end
 final_result = char(vpa(result,precision));
-%Mostra dados ao usuÃ¡rio
+%Mostra dados ao usuário
 if iteration < 100
 
-    W = ['A quantidade de iteraÃ§Ãµes efetuadas: ', num2str(iteration)];
+    W = ['A quantidade de iterações efetuadas: ', num2str(iteration)];
     X = ['O valor do erro dado foi: ', num2str(epsilon)];
-    Y = ['O valor do erro calculado Ã©: ', char(calculated_epsilon)];
-    Z = ['O valor de zero da raÃ­z Ã©: ', final_result];
+    Y = ['O valor do erro calculado é: ', char(calculated_epsilon)];
+    Z = ['O valor de zero da raíz é: ', final_result];
     clc
     disp(W);
     disp(X);
     disp(Y);
     disp(Z);
 else
-    warning('FunÃ§Ã£o ultrapassou o nÃºmero mÃ¡ximo de iteraÃ§Ãµes');
+    warning('Função ultrapassou o número máximo de iterações');
 end

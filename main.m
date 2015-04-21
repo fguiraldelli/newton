@@ -7,10 +7,14 @@ clc;
 syms x x0 x1;
 %Entrada de Dados pelo usuário
 warning off backtrace;
+method = input('Deseja utilizar o método de Newton ou da Secante?', 's');
 fx = input('Digite a função: ');
 x0 = input('Digite o valor de x0: ');
-x1 = input('Digite o valor de x1: ');
+if strcmp(method, 'secante')
+    x1 = input('Digite o valor de x1: ');
+end
 epsilon = 10^input('Digite a precisão do erro que deseja: ');
+iter = input('Digite a quantidade máxima de iterações: ');
 precision = input('Escolha a precisão em casas decimais(3 a 32): ');
 xpto = true;
 %Tratamento de Erro
@@ -23,37 +27,26 @@ while xpto == true
     	xpto = false;
     end
 end
-xpto = true;
 precision = abs(precision)-1;
 iteration = 0;
 figure;
 ezplot(fx);
 hold on
 grid on
-%Verifica iterações
-while xpto && iteration < 100
-    fa = subs(fx, x, x0);
-    fb = subs(fx, x, x1);
-    m = (fb-fa)/(x1-x0);
-    y = m*(x1-x0)-fa;
-    result = (x0*fb - x1*fa)/(fb-fa);
-    calculated_epsilon = vpa(abs(x0 - result), precision);
-    if (calculated_epsilon <= epsilon)
-        xpto = false;
-    end
-    ezplot(y);
-    x0 = x1;
-    x1 = result;
-    iteration = iteration + 1;
+
+if strcmpi(method, 'secante')
+    [iteration, calculated_epsilon, final_result] = sect(fx, x0, x1, epsilon, precision, iter);
+elseif strcmpi(method, 'newton')
+    [iteration, calculated_epsilon, final_result] = newt(fx, x0, epsilon, precision, iter);
 end
-final_result = char(vpa(result,precision));
-calc_ep = double(calculated_epsilon);
+
 %Mostra dados ao usuário
-if iteration < 100
+clc;
+if iteration < iter
 
     W = ['A quantidade de iterações efetuadas: ', num2str(iteration)];
     X = ['O valor do erro dado foi: ', num2str(epsilon)];
-    Y = ['O valor do erro calculado é: ', num2str(calc_ep)];
+    Y = ['O valor do erro calculado é: ', num2str(double(calculated_epsilon))];
     Z = ['O valor de zero da raíz é: ', final_result];
     clc
     disp(W);
@@ -63,3 +56,9 @@ if iteration < 100
 else
     warning('Função ultrapassou o número máximo de iterações');
 end
+
+disp('Pressione qualquer tecla para fechar');
+pause();
+clear all;
+close all;
+clc;
