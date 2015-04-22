@@ -5,16 +5,15 @@ function[iteration, calculated_epsilon, final_result] = newt(fx, x0, epsilon, pr
     while xpto && iteration < iter
         fa = subs(fx, x0);
         dfa = subs(dfx, x0);
-        result = x0 - (fa / dfa);
-%         m = (fb-fa)/(x1-x0);
-%         y = m*(x1-x0)-fa;
+        result = vpa((x0 - (fa / dfa)), precision);
         calculated_epsilon = vpa(abs(x0 - result), precision);
         if (calculated_epsilon <= epsilon)
             xpto = false;
         end
-%         ezplot(y);
+        y = line([x0, result], [fa, 0], 'Color', [1, 0, 0]);
+        plot(y);
         x0 = result;
         iteration = iteration + 1;
     end
-    final_result = char(vpa(result,precision));
+    final_result = char(result);
 end
