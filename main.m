@@ -1,5 +1,5 @@
-%
-% Francisco Guiraldelli
+%%
+% Francisco Guiraldelli    -    379840    -    francisco.guiraldelli@gmail.com
 % Rafael Camara Pereira    -    380431    -    rafael_c_pereira@hotmail.com
 %
 % Implementacao da rotina de execucao principal com entrada de dados pelo
