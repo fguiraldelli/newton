@@ -1,39 +1,69 @@
+%
+% Francisco Guiraldelli
+% Rafael Camara Pereira    -    380431    -    rafael_c_pereira@hotmail.com
+%
+% Implementacao da rotina de execucao principal com entrada de dados pelo
+% usuario, tratamento de erros, chamada das rotinas principais e exibicao
+% de resultados
+%
+
 %Limpa as variaveis
 clear all;
 close all;
 %Limpa a Tela
 clc;
-%Instancia a variavel simbolica x
-syms x x0 x1;
-%Entrada de Dados pelo usuario
+%Elimina mostra na tela de detalhes de tratamento de erro
 warning off backtrace;
-method = input('Digite 1 para utilizar o metodo de Newton ou 2 para utilizar o metodo da Secante: ');
+
+%Instancia as variaveis simbolicas
+syms x x0 x1;
+%Variavel booleana auxiliar
+xpto = false;
+
+%Entrada de Dados pelo usuario
+%Tratamento de Erro
+while xpto == false
+    method = input('Digite 1 para utilizar o metodo de Newton ou 2 para utilizar o metodo da Secante: ');
+    if (method == 1) || (method == 2)
+        xpto = true;
+    else
+        clc;
+        warning('Valor nao corresponde a nenhum metodo');
+    end
+end
 fx = input('Digite a funcao: ');
 x0 = input('Digite o valor de x0: ');
+%Dado exclusivo do metodo da secante
 if method == 2
     x1 = input('Digite o valor de x1: ');
 end
-epsilon = 10^input('Digite a precisao do erro que deseja: ');
+epsilon = input('Digite a precisao do erro que deseja: ');
 iter = input('Digite a quantidade maxima de iteracoes: ');
-precision = input('Escolha a precisao em casas decimais(3 a 32): ');
-xpto = true;
 %Tratamento de Erro
 while xpto == true
-    if (isempty(precision)) || (precision < 3) || (precision > 32)
-        clc
-        warning('O valor de precisao deve estar entre 3 e 32');
-        precision = input('Escolha a precisao em casas decimais(3 a 32): ');
+    precision = input('Escolha a precisao em casas decimais(3 a 32): ');
+    if (precision >= 3) && (precision <= 32) && (precision >= abs(epsilon))
+        xpto = false;
     else
-    	xpto = false;
+        clc;
+        if (precision < abs(epsilon))
+            warning('O valor de precisao deve ser maior ou igual a precisao do erro');
+        end
+        if (precision < 3) || (precision > 32) || (isempty(precision))
+            warning('O valor de precisao deve estar entre 3 e 32');
+        end
     end
 end
+%Tratamento especial de erro na mostra de precisao em unix
 precision = abs(precision)-1;
-iteration = 0;
+epsilon = 10^epsilon;
+%Plotagem do grafico da funcao
 figure;
 ezplot(fx);
 hold on
 grid on
 
+%Chamada para o metodo escolhido
 if method == 2
     [iteration, calculated_epsilon, final_result] = sect(fx, x0, x1, epsilon, precision, iter);
 elseif method == 1
