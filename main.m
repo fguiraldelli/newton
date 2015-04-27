@@ -15,6 +15,9 @@ clc;
 %Elimina mostra na tela de detalhes de tratamento de erro
 warning off backtrace;
 
+format long;
+format compact;
+
 %Instancia as variaveis simbolicas
 syms x x0 x1;
 %Variavel booleana auxiliar
@@ -65,19 +68,21 @@ grid on
 
 %Chamada para o metodo escolhido
 if method == 2
-    [iteration, calculated_epsilon, final_result] = sect(fx, x0, x1, epsilon, precision, iter);
+    [iteration, calculated_epsilon, final_result, time] = sect(fx, x0, x1, epsilon, precision, iter);
 elseif method == 1
-    [iteration, calculated_epsilon, final_result] = newt(fx, x0, epsilon, precision, iter);
+    [iteration, calculated_epsilon, final_result, time] = newt(fx, x0, epsilon, precision, iter);
 end
 
 %Mostra dados ao usuário
 clc;
 if iteration < iter
+    V = ['O método executou em ', num2str(time), ' segundos'];
     W = ['A quantidade de iteracoes efetuadas: ', num2str(iteration)];
     X = ['O valor do erro dado foi: ', num2str(epsilon)];
     Y = ['O valor do erro calculado e: ', num2str(double(calculated_epsilon))];
     Z = ['O valor de zero da raiz e: ', final_result];
     clc
+    disp(V);
     disp(W);
     disp(X);
     disp(Y);

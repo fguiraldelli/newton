@@ -6,7 +6,8 @@
 % resultado final com numero de iteracoes
 %
 
-function[iteration, calculated_epsilon, final_result] = newt(fx, x0, epsilon, precision, iter)
+function[iteration, calculated_epsilon, final_result, time] = newt(fx, x0, epsilon, precision, iter)
+    tic
     %Derivada da funcao
     dfx = diff(fx);
     %Variavel booleana auxiliar
@@ -38,4 +39,5 @@ function[iteration, calculated_epsilon, final_result] = newt(fx, x0, epsilon, pr
     end
     %Tratamento do resultado final para exibicao
     final_result = char(result);
+    time = toc;
 end
