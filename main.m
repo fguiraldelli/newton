@@ -1,10 +1,10 @@
 %
-% Francisco Guiraldelli    -    379840    -    francisco.guiraldelli@gmail.com
-% Rafael Camara Pereira    -    380431    -    rafael_c_pereira@hotmail.com
+% Francisco Guiraldelli - 379840 - francisco.guiraldelli@gmail.com
+% Rafael Camara Pereira - 380431 - rafael_c_pereira@hotmail.com
 %
-% Implementacao da rotina de execucao principal com entrada de dados pelo
-% usuario, tratamento de erros, chamada das rotinas principais e exibicao
-% de resultados
+% Implementacao da rotina de execucao principal com entrada  
+% de dados pelo usuario, tratamento de erros, chamada das  
+% rotinas principais e exibicao de resultados
 %
 
 %Limpa as variaveis
@@ -15,6 +15,7 @@ clc;
 %Elimina mostra na tela de detalhes de tratamento de erro
 warning off backtrace;
 
+%Forcar formatacao dos numeros
 format long;
 format compact;
 
@@ -44,15 +45,15 @@ epsilon = input('Digite a precisao do erro que deseja: ');
 iter = input('Digite a quantidade maxima de iteracoes: ');
 %Tratamento de Erro
 while xpto == true
-    precision = input('Escolha a precisao em casas decimais(3 a 32): ');
-    if (precision >= 3) && (precision <= 32) && (precision >= abs(epsilon))
+    precision=input('Digite a precisao em casas decimais(3 a 32): ');
+    if (precision>=3)&&(precision<=32)&&(precision>=abs(epsilon))
         xpto = false;
     else
         clc;
         if (precision < abs(epsilon))
             warning('O valor de precisao deve ser maior ou igual a precisao do erro');
         end
-        if (precision < 3) || (precision > 32) || (isempty(precision))
+        if (precision < 3)||(precision > 32)||(isempty(precision))
             warning('O valor de precisao deve estar entre 3 e 32');
         end
     end
@@ -68,19 +69,19 @@ grid on
 
 %Chamada para o metodo escolhido
 if method == 2
-    [iteration, calculated_epsilon, final_result, time] = sect(fx, x0, x1, epsilon, precision, iter);
+    [iteration, calc_ep, final_result, time] = sect(fx, x0, x1, epsilon, precision, iter);
 elseif method == 1
-    [iteration, calculated_epsilon, final_result, time] = newt(fx, x0, epsilon, precision, iter);
+    [iteration, calc_ep, final_result, time] = newt(fx, x0, epsilon, precision, iter);
 end
 
-%Mostra dados ao usuário
+%Mostra dados ao usuario
 clc;
 if iteration < iter
-    V = ['O método executou em ', num2str(time), ' segundos'];
-    W = ['A quantidade de iteracoes efetuadas: ', num2str(iteration)];
-    X = ['O valor do erro dado foi: ', num2str(epsilon)];
-    Y = ['O valor do erro calculado e: ', num2str(double(calculated_epsilon))];
-    Z = ['O valor de zero da raiz e: ', final_result];
+    V=['O metodo executou em ', num2str(time), ' segundos'];
+    W=['A quantidade de iteracoes efetuadas: ', num2str(iteration)];
+    X=['O valor do erro dado foi: ', num2str(epsilon)];
+    Y=['O valor do erro calculado e: ', num2str(double(calc_ep))];
+    Z=['O valor de zero da raiz e: ', final_result];
     clc
     disp(V);
     disp(W);
