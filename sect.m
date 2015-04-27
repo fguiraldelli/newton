@@ -7,13 +7,13 @@
 %
 
 function[iteration, calculated_epsilon, final_result, time] = sect(fx, x0, x1, epsilon, precision, iter)
-    tic;
     %Variavel booleana auxiliar
     xpto = true;
     %Contador de iteracoes efetuadas
     iteration = 0;
     %Repeticao enquanto epsilon calculado for menor que o pedido e nao
     %ultrapassou o limite de iteracoes
+    tic;
     while xpto && iteration < iter
         %Substituicao de x por valores de x0 e x1 na f(x)
         fa = subs(fx, x0);
@@ -36,7 +36,7 @@ function[iteration, calculated_epsilon, final_result, time] = sect(fx, x0, x1, e
         %Somador de iteracoes
         iteration = iteration + 1;
     end
+    time = toc;
     %Tratamento do resultado final para exibicao
     final_result = char(result);
-    time = toc;
 end
