@@ -1,0 +1,135 @@
+\documentclass[ruledheader, 12pt, onecolumn, a4paper] {report}%{abnt}
+\usepackage[brazil]{babel}
+%\usepackage[num]{abntcite}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{multicol,ragged2e}
+\usepackage{dcolumn}
+\usepackage[final]{pdfpages}
+\usepackage{amsmath}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+%\usepackage{geometry} % este pacote é opcional, pois ele serve para formatar as margens da nossa página
+%\geometry{hmargin={1.5cm,1.5cm},vmargin={1.5cm,2cm}} % aqui estou pedindo margens horizontais com 2.5cm e verticais com 3 com. Estes valores podem ser mudados
+%\usepackage{fullpage}
+%\addtolength{\hoffset}{-2cm}
+%\addtolength{\voffset}{-2cm}
+%\addtolength{\textheight}{7cm}
+%\addtolength{\textwidth}{4cm}
+%Título
+\author{GRUPO TRABALHO\\ Francisco Augusto Cesar De Camargo Bellaz Guiraldelli - RA 379840\\ Rafael Câmara Pereira}
+\title {\LARGE{Estudo e Simulação Métodos de Newton e Secante} \\ \small{ \textit{Prof.ª Dr.ª Silvia Maria Simões de Carvalho }\vspace{10cm}} \\ }
+\date {27/04/2015}
+\begin{document}
+\maketitle
+\tableofcontents
+%\listoftables
+%\listoffigures
+
+\chapter{Introdução}
+Aqui fica a introdução do Newton!!!!
+
+\chapter{Objetivos do Trabalho}
+
+\section{Objetivos}
+O Objetivo do estudo é utilizar algumas funções polinomiais, logarítmicas, exponenciais e trigonométricas a fim de se observar o comportamento dos métodos de {\it Newton} e da {\it Secante} implementados. Dessa forma, serão feitas análises verificando-se as iterações, tabelas de valores e o tipo de gráfico que as funções apresentam.
+
+\chapter{Descrição Escopo}
+
+\section{Descrição Gerais}
+
+
+\section{Descrição da Interface com o usuário pelo site}
+
+
+\section{Descrição do Banco de Dados}
+O banco de dados utilizados terá aproximadamente por volta de 9 milhões de dados, separados em tabelas diversas e normalizadas. O Sistema de Gerenciamento de Banco de Dados utilizado será o Microsoft SQL Server que será acessado e gerenciado pela interface WEB.\\
+O banco de dados terá privilégios distintos para usuários que fazem consultas e por colaboradores que efetivamente podem além de consultar, podem inserir, remover e alterar entidades, tipos e a descrição de cada objeto, local ou coisa. Além dos dados referentes às pesquisas o banco de dados também terá cadastro de usuários.
+
+\section{Perspectivas}
+
+
+\chapter{Requisitos do Projeto}
+
+
+
+
+%As linguagens compiladas destinam-se à criação e desenvolvimento de diversos programas de computador, para as mais
+%variadas aplicações e situações profissionais, dando como exemplo na tabela \ref{tab:RCIC} o fim para que foram criadas.\cite{Monteiro2002}\\
+%\begin{table}[h]
+%\begin{center}
+%\begin{tabular}{|p{2cm}|p{1cm}|p{11cm}|}
+%\hline
+%\textbf{Linguagem}&\textbf{Data}&\textbf{Observações}\\\hline
+%FORTRAN&1957&FORmula TRANslation --- primeira linguagem de alto nível.
+%Desenvolvida para realização de cálculos numéricos.\\\hline
+%ALGOL&1958&ALGOrithm Language --- linguagem desenvolvida para uso em pesquisa e desenvolvimento,
+%possuindo uma estrutura algorítmica.\\\hline
+%COBOL&1959&COmom Bussiness Oriented Language --- primeira linguagem desenvolvida para fins comerciais.\\\hline
+%LISP&1960&Linguagem para manipulação de símbolos e listas.\\\hline
+%PL/I&1964& Linguagem desenvolvida com propósito de servir para emprego geral (comercial e científico). Fora de uso.\\\hline
+%BASIC&1964&Desenvolvida em Universidade, tornou-se conhecida quando do lançamento do IBM-PC, que veio com um interpretador
+%de linguagem, escrito por Bill Gates e Paul Allen.\\\hline
+%C&1967&Linguagem para programação de sistemas operacionais e compiladores.\\\hline
+%PASCAL&1968&Primeira linguagem estruturada --- designação em homenagem ao matemático francês Blaise Pascal que, em
+%1642, foi o primeiro a planejar e construir uma máquina de calcular.\\\hline
+%ADA&1980&Desenvolvido para o Departamento de Defesa dos EUA.\\\hline
+%DELPHI&1994&Baseada na linguagem Object Pascal, uma versão do Pascal orientada a objetos.\\\hline
+%JAVA&1996&Desenvolvida pela Sun, sendo independente da plataforma onde é executada. Muito usada para sistemas Web.\\\hline
+%\end{tabular}
+%\end{center}
+%\caption{\label{tab:RCIC}Resumo do uso de recursos de computação durante o processo de compilação e interpretação}
+%\end{table}
+
+\chapter{Cronograma de Entregas do Projeto}
+%\includepdf[pages={2},lastpage=1, landscape=true]{pg_0010}
+%\includepdf[lastpage=1,pages={1}, landscape=true]{pg_0010.pdf}
+%Desde a idealização da máquina computacional até seu invento e consequente aprimoração, junto com ela as linguagens
+%de programação também seguem o mesmo caminho de evolução, divergindo em seus paradigmas e na forma como ela é traduzida
+%em linguagem de máquina ou código binário. Podemos também comentar apesar de não ser o objeto estudo deste trabalho as
+%linguagens interpretativas, que também são linguagens codificadas que são traduzidas em código binário através de um
+%interpretador.\\
+%O que podemos verificar entre as linguagens compiladas e interpretativas são os estudos de comparação entre elas, cada
+%uma com seus prós e contras relacionado ao seu funcionamento, portabilidade e desempenho.
+%Segundo Monteiro\cite{Monteiro2002}, podemos descrever uma tabela com o resumo do uso de recursos de computação
+%durante o processo de compilação e interpretação mostrada na tabela \ref{tab:RCLC}.\\
+%\begin{table}[h]
+%\begin{center}
+%\begin{tabular}{|p{7cm}|p{3cm}|p{3cm}|}
+%\hline
+%\textbf{Recursos}&\textbf{Compilação}&\textbf{Interpretação}\\\hline
+%Uso da memória (durante execução)&&\\
+%--- Interpretador ou compilador&Não&Sim\\
+%--- Código-fonte&Não&Parcial\\
+%--- Código executavel&Sim&Parcial\\
+%--- Rotinas de bibliotecas&Só as necessárias&Todas\\
+%Instruções de máquina (durante execução)&&\\
+%--- Operações de tradução&Não&Sim\\
+%--- Ligação de bibliotecas&Não&Sim\\
+%--- Programa de aplicação&Sim&Sim\\\hline
+%\end{tabular}
+%\end{center}
+%\caption{\label{tab:RCLC}Recursos de computação durante o processo de compilação e interpretação}
+%\end{table}
+%Outras comparações que podemos citar segundo Monteiro \cite{Monteiro2002} entre linguagens compiladas e interpretativas, 
+%são que esta última tem como principal vantagem identificar e indicar um erro no código-fonte, além de sua 
+%interface ser mais agrádavel. As linguagens compiladas por sua vez, ocupam menos memória do sistema, 
+%são mais velozes em sua execução e em certas partes no código-fonte (um loop, por exemplo) acontece sempre uma única
+%vez, diferente da linguagem interpretativa ter que verificá-lo tantas vezes quantas definidas no loop.
+%Na figura \ref{fig:sec} poderemos ver um fluxograma do processo de desenvolvimento e depuração entre linguagens compiladas 
+%e interpretarivas.\cite{Monteiro2002}\\
+%Por fim, o trabalho pode nos auxiliar a ter uma pequena noção sobre linguagens compiladas, sua relevância no mundo da
+%computação e seus usos recorrentes da implementação.
+%\begin{center}
+%\begin{figure}[!hbp]
+	%\includegraphics[width=1\textwidth]{Flux_lc}
+    %\caption{\label{fig:sec}Fluxograma do processo de desenvolvimento e depuração entre linguagens compiladas 
+%e interpretativas.}
+%\end{figure}
+%\end{center}
+%\bibliographystyle{abnt-num}
+%\bibliography{biblio}
+\end{document}
